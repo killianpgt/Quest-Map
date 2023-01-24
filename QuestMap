@@ -1,0 +1,40 @@
+local Exem = "rbxassetid://"
+
+firesignal(game.ReplicatedStorage.Bricks.Caption.OnClientEvent, "Made By puffer fish [ killianPGT ]#9003")
+
+local Map = game:GetObject(Exem.."281414717")[1]
+Map.Parent = workspace
+Map:MoveTo(Vector3.new(0, 0, 0))
+
+local player = game.Players.LocalPlayer
+local Character = game.Players.LocalPlayer.Character
+local PlayerGui = game.Players.LocalPlayer.PlayerGui
+
+local Sound = game:GetObject(Exem.."12257982914")[1]
+Sound:Play()
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = PlayerGui
+
+local ImageIntro = loadstring(game:HttpGet("https://github.com/killianpgt/Image-Intro/blob/main/intro.rbxm?raw=true"))()
+ImageIntro.Transparency = 1
+
+local TweenService = game:GetService("TweenService")
+
+local Info = TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.In, 0, false, 0)
+
+local Goal = 
+{
+Transparency = 0
+}
+
+local Goal1 = 
+{
+Transparency = 1
+}
+
+TweenService:Create(ImageIntro, Info, Goal):Play()
+
+wait(2)
+
+TweenService:Create(ImageIntro, Info, Goal1):Play()
