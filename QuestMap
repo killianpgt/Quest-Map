@@ -1,8 +1,6 @@
-local Exem = "rbxassetid://"
-
 firesignal(game.ReplicatedStorage.Bricks.Caption.OnClientEvent, "Made By puffer fish [ killianPGT ]#9003")
 
-local Map = game:GetObject(Exem.."281414717")[1]
+local Map = game:GetObject("rbxassetid://281414717")[1]
 Map.Parent = workspace
 Map:MoveTo(Vector3.new(0, 0, 0))
 
@@ -10,7 +8,7 @@ local player = game.Players.LocalPlayer
 local Character = game.Players.LocalPlayer.Character
 local PlayerGui = game.Players.LocalPlayer.PlayerGui
 
-local Sound = game:GetObject(Exem.."12257982914")[1]
+local Sound = game:GetObject("rbxassetid://12257982914")[1]
 Sound:Play()
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -18,8 +16,41 @@ ScreenGui.Parent = PlayerGui
 
 local ImageIntro = loadstring(game:HttpGet("https://github.com/killianpgt/Image-Intro/blob/main/intro.rbxm?raw=true"))()
 ImageIntro.Transparency = 1
+ImageIntro.Parent = ScreenGui
 
 local TweenService = game:GetService("TweenService")
+
+local PartInst = Instance.new("Part")
+PartInst.Parent = workspace
+PartInst.Position = Vector3.new() -- a faire dans le futur !
+PartInst.Anchored = true
+PartInst.Color = Color3.new(255, 255)
+PartInst.Material = Enum.Material.Neon
+
+
+local MarketPlaceService = game:GetService("MarketplaceService")
+
+PartInst.Touched:Connect(function(hit)
+
+local plr = game:GetService("Players"):GetPlayerFromCharacter(hit.Parent)
+
+
+if plr then
+
+MarketPlaceService:PromptPurchase(player, 6513657418)
+
+end
+
+
+end)
+
+MarketplaceService.PromptGamePassPurchaseFinished:Connect(function(player, 6513657418, true)
+
+wait(1)
+
+player:MoveTo(Vector3.new()) -- a faire dans le futur !
+
+end)
 
 local Info = TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.In, 0, false, 0)
 
@@ -37,4 +68,11 @@ TweenService:Create(ImageIntro, Info, Goal):Play()
 
 wait(2)
 
+player:MoveTo(Vector3.new()) -- a faire dans le futur !
+
 TweenService:Create(ImageIntro, Info, Goal1):Play()
+
+wait(2)
+
+ScreenGui:Destroy()
+
